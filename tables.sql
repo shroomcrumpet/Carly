@@ -3,7 +3,7 @@
 
 CREATE TABLE IF NOT EXISTS users (
 	id SERIAL PRIMARY KEY,
-	email VARCHAR(320),
+	email VARCHAR(320) UNIQUE,
 	firstname TEXT,
 	lastname TEXT,
 	password TEXT
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS cars (
 	make TEXT,
 	model TEXT,
 	year INTEGER,
-	photo VARBINARY(max),
+	photo TEXT,
 	location TEXT
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS rental (
 	owner_id INTEGER,
 	renter_id INTEGER,
 	car_id INTEGER,
-	rental_start DATETIME
+	rental_start DATE
 );
 
 

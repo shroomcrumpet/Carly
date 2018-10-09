@@ -1,23 +1,29 @@
 
 
-const usersController = require('./controllers/user')(db);
-
-
 module.exports = (app, db) => {
 
-    // =========================================
-    // Users
-    // =========================================
-
-    // app.get('/users/new', usersController.newUserForm);
-    // app.post('/users', usersController.newUserPost);
+    const homeController = require('./controllers/home')(db);
+    const userController = require('./controllers/user')(db);
 
 
     // =========================================
     // Homepage
     // =========================================
 
-    // app.get('/', usersController.root);
+    app.get('/', homeController.homepage);
+
+
+    // =========================================
+    // Users
+    // =========================================
+
+    app.get('/users/new', userController.newUserForm);
+    app.post('/users', userController.newUserPost);
+
+
+    // =========================================
+    // xxx
+    // =========================================
 
     // app.post('/login', usersController.login);
     // app.delete('/logout', usersController.logout);

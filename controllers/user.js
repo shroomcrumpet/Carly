@@ -15,36 +15,41 @@ const SALT = 'CAR CAR carly';
 module.exports = (db) => {
 
 
-    // const newUserForm = (request, response) => {
+    const newUserForm = (request, response) => {
 
-    //     response.render('user/NewUser');
+        response.render('user/NewUserForm');
 
-    // };
+    };
 
 
-    // const newUserPost = (request, response) => {
+    const newUserPost = (request, response) => {
 
-    //     db.user.newUser(request.body, (error, queryResult) => {
+        db.user.newUser(request.body, (error, queryResult) => {
 
-    //         if (error) {
-    //             console.error('error getting user:', error);
-    //             response.sendStatus(500);
-    //         }
+            if (error) {
 
-    //         if (queryResult.rowCount >= 1) {
-    //             console.log('User created successfully');
+                console.error('Error adding user:', error);
+                response.sendStatus(500);
 
-    //             response.cookie('loggedIn', sha256(queryResult.rows[0].id + SALT));
-    //             response.cookie('userId', queryResult.rows[0].id);
-    //             response.cookie('username', request.body.username);
+            } else {
 
-    //         } else {
-    //             console.log('User could not be created');
-    //         };
+                if (queryResult.rowCount >= 1) {
 
-    //         response.redirect('/');
-    //     });
-    // };
+                    console.log('User created successfully');
+
+                    response.cookie('loggedIn', sha256(queryResult.rows[0].id + SALT));
+                    response.cookie('userId', queryResult.rows[0].id);
+                    response.cookie('firstName', request.body.firstname);
+
+                } else {
+
+                    console.log('User could not be created');
+                };
+
+                response.redirect('/');
+            };
+        });
+    };
 
 
     // const login = (request, response) => {
@@ -144,8 +149,8 @@ module.exports = (db) => {
 
     return {
 
-        // newUserForm,
-        // newUserPost,
+        newUserForm,
+        newUserPost
         // login,
         // logout,
         // root,
