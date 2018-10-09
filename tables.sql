@@ -4,8 +4,8 @@
 CREATE TABLE IF NOT EXISTS users (
 	id SERIAL PRIMARY KEY,
 	email VARCHAR(320),
-	first name TEXT,
-	last name TEXT,
+	firstname TEXT,
+	lastname TEXT,
 	password TEXT
 );
 
