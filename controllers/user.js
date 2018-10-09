@@ -17,7 +17,7 @@ module.exports = (db) => {
 
     const newUserForm = (request, response) => {
 
-        response.render('user/NewUserForm');
+        response.render('user/newUserForm');
 
     };
 
@@ -52,54 +52,61 @@ module.exports = (db) => {
     };
 
 
-    // const login = (request, response) => {
+    const userLoginForm = (request, response) => {
 
-    //     db.user.login(request.body, (error, queryResult) => {
+        response.render('user/userLoginForm');
 
-    //         if (error) {
-    //             console.error('error getting user:', error);
-    //             response.sendStatus(500);
-    //         }
-
-    //         if (queryResult.rowCount >= 1) {
-    //             console.log('User found, logging in...');
-
-    //             if (sha256(request.body.password) === queryResult.rows[0].password) {
-
-    //                 console.log('Login Successful');
-
-    //                 response.cookie('loggedIn', sha256(queryResult.rows[0].id + SALT));
-    //                 response.cookie('userId', queryResult.rows[0].id);
-    //                 response.cookie('username', request.body.username);
-
-    //             } else {
-
-    //                 console.log('Password incorrect, please try again');
-
-    //             };
-
-    //         } else {
-
-    //             console.log('User not found, please try again');
-
-    //         };
-
-    //         response.redirect('/');
-    //     });
-    // };
+    };
 
 
-    // const logout = (request, response) => {
+    const userLoginPost = (request, response) => {
 
-    //     response.clearCookie('loggedIn');
-    //     response.clearCookie('userId');
-    //     response.clearCookie('username');
+        db.user.login(request.body, (error, queryResult) => {
 
-    //     console.log('You have been logged out~!');
+            if (error) {
+                console.error('Error getting user:', error);
+                response.sendStatus(500);
 
-    //     response.redirect('/');
+            } else if (queryResult.rowCount >= 1) {
 
-    // };
+                console.log('User found, logging in...');
+
+                if (sha256(request.body.password) === queryResult.rows[0].password) {
+
+                    console.log('Login Successful');
+
+                    response.cookie('loggedIn', sha256(queryResult.rows[0].id + SALT));
+                    response.cookie('userId', queryResult.rows[0].id);
+                    response.cookie('firstName', request.body.firstname);
+
+                } else {
+
+                    console.log('Password incorrect, please try again');
+
+                };
+
+            } else {
+
+                console.log('User not found, please try again');
+
+            };
+
+            response.redirect('/');
+        });
+    };
+
+
+    const userLogout = (request, response) => {
+
+        response.clearCookie('loggedIn');
+        response.clearCookie('userId');
+        response.clearCookie('username');
+
+        console.log('You have been logged out~!');
+
+        response.redirect('/');
+
+    };
 
 
     // const root = (request, response) => {
@@ -150,10 +157,11 @@ module.exports = (db) => {
     return {
 
         newUserForm,
-        newUserPost
-        // login,
-        // logout,
-        // root,
+        newUserPost,
+        userLoginForm,
+        userLoginPost,
+        userLogout
+
         // test,
         // foobar
 

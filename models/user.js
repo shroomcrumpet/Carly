@@ -26,15 +26,15 @@ module.exports = (dbPoolInstance) => {
     };
 
 
-    // const login = (reqbody, callback) => {
+    const login = (reqbody, callback) => {
 
-    //     const queryString = `SELECT * FROM users WHERE username = '${reqbody.username}'`;
+        const queryString = `SELECT * FROM users WHERE email = '${reqbody.email.toLowerCase()}'`;
 
-    //     dbPoolInstance.query(queryString, (error, queryResult) => {
+        dbPoolInstance.query(queryString, (error, queryResult) => {
 
-    //         callback(error, queryResult);
-    //     });
-    // };
+            callback(error, queryResult);
+        });
+    };
 
 
     // const foobar = (reqbody, callback) => {
@@ -50,8 +50,8 @@ module.exports = (dbPoolInstance) => {
 
     return {
 
-        newUser: newUser
-        // login: login,
+        newUser: newUser,
+        login: login
         // foobar: foobar
 
     };

@@ -3,7 +3,7 @@
 var React = require("react");
 var DefaultLayout = require('../layouts/default');
 
-class NewUser extends React.Component {
+class NewUserForm extends React.Component {
 
     render() {
 
@@ -25,14 +25,14 @@ class NewUser extends React.Component {
 
                 </form>
 
-                <script src="/confirmPassword.js" />
+                <script src="/user/confirmPassword.js" />
 
             </DefaultLayout>
         );
     };
 };
 
-module.exports = NewUser;
+module.exports = NewUserForm;
 
 
 
