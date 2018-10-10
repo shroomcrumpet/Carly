@@ -3,41 +3,36 @@
 module.exports = (dbPoolInstance) => {
 
 
-    // const newUser = (reqbody, callback) => {
+    const newCar = (reqbody, callback) => {
 
-    //     var hashedValue = sha256(reqbody.password);
+        const queryString = 'INSERT INTO cars (owner_id, make, model, year, photo, address, postcode, avail_start, avail_end, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *';
 
-    //     const queryString = 'INSERT INTO users (email, firstname, lastname, password) VALUES ($1, $2, $3, $4) RETURNING id';
+        const values = [
+            reqbody.owner_id,
+            reqbody.make,
+            reqbody.model,
+            reqbody.year,
+            reqbody.photo,
+            reqbody.address,
+            reqbody.postcode,
+            reqbody.avail_start,
+            reqbody.avail_end,
+            parseFloat(reqbody.price).toFixed(2)
+        ];
 
-    //     const values = [
-    //         reqbody.email.toLowerCase(),
-    //         reqbody.firstname,
-    //         reqbody.lastname,
-    //         sha256(reqbody.password)
-    //     ];
+        dbPoolInstance.query(queryString, values, (error, queryResult) => {
 
-    //     dbPoolInstance.query(queryString, values, (error, queryResult) => {
-
-    //         callback(error, queryResult);
-    //     });
-    // };
-
-
-    // const login = (reqbody, callback) => {
-
-    //     const queryString = `SELECT * FROM users WHERE email = '${reqbody.email.toLowerCase()}'`;
-
-    //     dbPoolInstance.query(queryString, (error, queryResult) => {
-
-    //         callback(error, queryResult);
-    //     });
-    // };
-
+            callback(error, queryResult);
+        });
+    };
 
     return {
 
-        // newUser: newUser,
-        // login: login
+        newCar: newCar,
 
     };
 };
+
+
+
+

@@ -1,0 +1,46 @@
+
+
+/*Disable type=number input spinners:
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}*/
+
+
+/* Form wizard: hide all steps by default: */
+.form-tab {
+  display: none;
+}
+
+/* Form wizard: mark input boxes with validation error: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Form wizard: circles that indicate form steps: */
+.form-step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Form wizard: mark the active form-step: */
+.form-step.active {
+  opacity: 1;
+}
+
+
+/* Form wizard: mark form-steps that are finished and valid: */
+.form-step.finish {
+  background-color: #4CAF50;
+}
+
+
+

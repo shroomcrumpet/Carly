@@ -1,9 +1,10 @@
 
 
 const pg = require('pg');
-const user = require('./models/user');
 const url = require('url');
 
+const user = require('./models/user');
+const cars = require('./models/cars');
 
 var configs;
 
@@ -40,12 +41,12 @@ pool.on('error', function(err) {
 
 module.exports = {
 
-    user: user (pool),
-
     queryInterface: (text, params, callback) => {
         return pool.query(text, params, callback);
     },
 
+    user: user (pool),
+    cars: cars (pool),
     pool: pool
 
 };

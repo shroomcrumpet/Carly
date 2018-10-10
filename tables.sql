@@ -12,11 +12,16 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS cars (
 	id SERIAL PRIMARY KEY,
+	owner_id INTEGER,
 	make TEXT,
 	model TEXT,
 	year INTEGER,
-	photo TEXT,
-	location TEXT
+	photo BYTEA,
+	address TEXT,
+	postcode INTEGER,
+	avail_start DATE,
+	avail_end DATE,
+	price DECIMAL(10,2)
 );
 
 
@@ -25,9 +30,10 @@ CREATE TABLE IF NOT EXISTS rental (
 	owner_id INTEGER,
 	renter_id INTEGER,
 	car_id INTEGER,
-	rental_start DATE
+	rental_start DATE,
+	rental_end DATE
 );
 
 
 
---run from Terminal: psql -d carly -U kencheng -f tables.sql
+--Terminal: psql -d carly -U kencheng -f tables.sql

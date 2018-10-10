@@ -1,90 +1,26 @@
 
 
+var React = require("react");
+var DefaultLayout = require('./layouts/default');
 
+class HomePage extends React.Component {
 
-// var React = require("react");
-// var DefaultLayout = require('./layouts/default');
+    render() {
 
-// class HomePage extends React.Component {
+        return (
 
-//     render() {
+            <DefaultLayout title='Carly' cookies={this.props}>
 
-//         return (
+                <h1>Own the trip, not the car</h1>
 
-//             <DefaultLayout title='Tweedr'>
+                <h3>[SEARCH BAR GOES HERE]</h3>
 
-//                 <h1># Tweedr #</h1>
+            </DefaultLayout>
+        );
+    };
+};
 
-//                 <Stuff cookies={this.props} />
-
-//             </DefaultLayout>
-//         );
-//     };
-// };
-
-
-// class Stuff extends React.Component {
-
-//     render () {
-
-//         if (this.props.cookies.loggedIn != undefined) {
-
-//             return (
-
-//                 <div>
-
-//                     <form className="user-form" method="POST" action="/logout?_method=DELETE">
-
-//                         <input type="submit" value="LOG OUT" />
-
-//                     </form>
-
-//                     <h3>What's on your mind?</h3>
-
-//                     <form className="user-form" method="POST" action="/tweets">
-
-//                         <div className="tweet-box">
-//                             <input name="newtweet" type="text" minLength="3" required />
-//                         </div>
-
-//                         <input type="submit" value="submit" />
-
-//                     </form>
-
-//                 </div>
-//             );
-
-//         } else {    // Not logged in //
-
-//             return (
-
-//                 <div>
-
-//                     <h4>Login</h4>
-
-//                     <form className="user-form" method="POST" action="/login">
-
-//                         <div className="user-attribute">
-//                             username<input name="username" type="text" minLength="3" required />
-//                         </div>
-
-//                         <div className="user-attribute">
-//                             password:<input name="password" type="text" minLength="3" required />
-//                         </div>
-
-//                         <input name="submit" type="submit" />
-
-//                     </form>
-
-//                 </div>
-
-//             );
-//         };
-//     };
-// };
-
-
-// module.exports = HomePage;
+module.exports = HomePage;
 
 
 

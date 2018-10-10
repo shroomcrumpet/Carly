@@ -9,7 +9,7 @@ class UserLoginForm extends React.Component {
 
         return (
 
-            <DefaultLayout title='Sign in'>
+            <DefaultLayout title='Sign in' cookies={this.props}>
 
                 <h4>Sign in to your Carly Account</h4>
 

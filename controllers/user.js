@@ -17,7 +17,7 @@ module.exports = (db) => {
 
     const newUserForm = (request, response) => {
 
-        response.render('user/newUserForm');
+        response.render('user/newUserForm', request.cookies);
 
     };
 
@@ -28,7 +28,7 @@ module.exports = (db) => {
 
             if (error) {
 
-                console.error('Error adding user:', error);
+                console.error('DB/server error:', error);
                 response.sendStatus(500);
 
             } else {
@@ -54,7 +54,7 @@ module.exports = (db) => {
 
     const userLoginForm = (request, response) => {
 
-        response.render('user/userLoginForm');
+        response.render('user/userLoginForm', request.cookies);
 
     };
 
@@ -77,7 +77,7 @@ module.exports = (db) => {
 
                     response.cookie('loggedIn', sha256(queryResult.rows[0].id + SALT));
                     response.cookie('userId', queryResult.rows[0].id);
-                    response.cookie('firstName', request.body.firstname);
+                    response.cookie('firstName', queryResult.rows[0].firstname);
 
                 } else {
 
@@ -100,28 +100,13 @@ module.exports = (db) => {
 
         response.clearCookie('loggedIn');
         response.clearCookie('userId');
-        response.clearCookie('username');
+        response.clearCookie('firstName');
 
         console.log('You have been logged out~!');
 
         response.redirect('/');
 
     };
-
-
-    // const root = (request, response) => {
-
-    //     if (verif(request)) {
-
-    //         console.log ('verif, logged in.');
-    //         response.render('root', request.cookies);
-
-    //     } else {
-
-    //         console.log ('verif, NOT logged in.');
-    //         response.render('root');
-    //     };
-    // };
 
 
     // const test = (request, response) => {
