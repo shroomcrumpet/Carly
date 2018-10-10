@@ -9,6 +9,27 @@ input[type=number]::-webkit-outer-spin-button {
 }*/
 
 
+
+div.homepage {
+	height: 89vh;
+	background: url(/img/girlbike.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+div.homepage h2, h3 {
+	color: white;
+	font-weight: 400;
+}
+
+div.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* Form wizard: hide all steps by default: */
 .form-tab {
   display: none;

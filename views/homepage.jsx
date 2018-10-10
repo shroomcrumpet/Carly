@@ -11,9 +11,17 @@ class HomePage extends React.Component {
 
             <DefaultLayout title='Carly' cookies={this.props}>
 
-                <h1>Own the trip, not the car</h1>
+            <div class="homepage vertical-center">
 
-                <h3>[SEARCH BAR GOES HERE]</h3>
+                <div>
+
+                    <h2 class="display-2 text-center">Own the trip, not the car</h2>
+
+                    <h3 class="text-center">[SEARCH BAR GOES HERE]</h3>
+
+                </div>
+
+            </div>
 
             </DefaultLayout>
         );
@@ -21,7 +29,6 @@ class HomePage extends React.Component {
 };
 
 module.exports = HomePage;
-
 
 
 
