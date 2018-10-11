@@ -15,19 +15,21 @@ class ShowCars extends React.Component {
                     <h3>Cars</h3>
                     <div className="row">
                         <div className="col-md-6">
-                            <ul className="list-group">
+                            <ul className="list-group carlist">
                                 {this.props.cars.map(cars => (
-                                    <li className="list-group-item" key={cars.id}>
+                                    <li className="list-group-item" key={cars.id} id={`car${cars.id}`}>
                                         <div className="row">
-                                            <div className="col">
+                                            <div className="col car-pic">
                                                 <img src={`/uploads/${cars.photo}`} style={{width: "100%"}} />
                                             </div>
-                                            <div className="col">
+                                            <div className="col car-info">
                                                 {cars.year} {cars.make} {cars.model}<br /><br />
                                                 {cars.address}, S{cars.postcode}<br />
                                                 S${cars.price} / day<br /><br />
                                                 "{cars.comments}"
                                             </div>
+                                            <div className="postcode" style={{display: "none"}}>{cars.postcode}</div>
+                                            <div className="address" style={{display: "none"}}>{cars.address}</div>
                                         </div>
                                     </li>
                                 ))}
@@ -41,7 +43,7 @@ class ShowCars extends React.Component {
                     </div>
                 </div>
 
-                <script src="car/maps.js" />
+                <script src="car/maps.js" test={this.props.cars} />
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
 
             </DefaultLayout>

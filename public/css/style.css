@@ -38,8 +38,15 @@ body {
 	margin-bottom: 5%;
 }
 
+/*Google map: */
 #map {
 	height: 80vh;
+}
+
+/*Google map: hide fullscreen button and click event: */
+.gmnoprint.gm-style-cc + button,
+.gm-fullscreen-control {
+  display: none;
 }
 
 
