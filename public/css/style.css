@@ -29,6 +29,10 @@ div.vertical-center {
   justify-content: center;
 }
 
+body {
+	margin-bottom: 5%;
+}
+
 
 /* Form wizard: hide all steps by default: */
 .form-tab {

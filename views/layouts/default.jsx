@@ -38,10 +38,10 @@ class DefaultLayout extends React.Component {
                 </header>
 
 
+
                 <body>
 
                     {this.props.children}
-
 
                 <footer className="fixed-bottom">
                     <div className="container">
@@ -77,7 +77,7 @@ class NavAuthenticated extends React.Component {
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Browse cars</a>
+                        <a className="nav-link" href="/cars">Browse cars</a>
                     </li>
 
                     <li className="nav-item">
