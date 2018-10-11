@@ -23,9 +23,9 @@ class ShowCars extends React.Component {
                                                 <img src={`/uploads/${cars.photo}`} style={{width: "100%"}} />
                                             </div>
                                             <div className="col">
-                                                {cars.year} {cars.make} {cars.model}<br />
+                                                {cars.year} {cars.make} {cars.model}<br /><br />
                                                 {cars.address}, S{cars.postcode}<br />
-                                                S${cars.price}<br /><br />
+                                                S${cars.price} / day<br /><br />
                                                 "{cars.comments}"
                                             </div>
                                         </div>
@@ -35,11 +35,14 @@ class ShowCars extends React.Component {
                         </div>
 
                         <div className="col-md-6">
-                            [MAP GOES HERE]
+                            <div id="map"></div>
                         </div>
 
                     </div>
                 </div>
+
+                <script src="car/maps.js" />
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
 
             </DefaultLayout>
         );
