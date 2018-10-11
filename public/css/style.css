@@ -18,7 +18,7 @@ div.homepage {
 	background-repeat: no-repeat;
 }
 
-div.homepage h2, h3 {
+div.homepage h2, div.homepage h3 {
 	color: white;
 	font-weight: 400;
 }
@@ -35,10 +35,10 @@ div.vertical-center {
   display: none;
 }
 
-/* Form wizard: mark input boxes with validation error: */
+/* Form wizard: mark input boxes with validation error:
 input.invalid {
   background-color: #ffdddd;
-}
+}*/
 
 /* Form wizard: circles that indicate form steps: */
 .form-step {

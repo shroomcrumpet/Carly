@@ -1,10 +1,10 @@
 
 
-module.exports = (app, db) => {
+module.exports = (app, upload, db) => {
 
     const homeController = require('./controllers/home')(db);
     const userController = require('./controllers/user')(db);
-    const carController = require('./controllers/car')(db);
+    const carController = require('./controllers/car')(upload, db);
 
 
     // =========================================
@@ -30,7 +30,9 @@ module.exports = (app, db) => {
     // Cars
     // =========================================
 
+    app.get('/cars', carController.getCars)
+
     app.get('/cars/new', carController.newCarForm);
-    app.post('/cars', carController.newCarPost);
+    app.post('/cars', upload.single('photo'), carController.newCarPost);
 
 };

@@ -2,11 +2,13 @@
 
 const express = require('express');
 const methodOverride = require('method-override');
+const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
 
 
 const app = express();
+const upload = multer({ dest: 'public/uploads/' });
 
 app.use(methodOverride('_method'));
 app.use(cookieParser());
@@ -20,7 +22,7 @@ app.set('view engine', 'jsx');
 app.engine('jsx', reactEngine);
 
 
-require('./routes')(app, db);
+require('./routes')(app, upload, db);
 
 
 const PORT = process.env.PORT || 3001;

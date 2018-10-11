@@ -16,12 +16,13 @@ CREATE TABLE IF NOT EXISTS cars (
 	make TEXT,
 	model TEXT,
 	year INTEGER,
-	photo BYTEA,
+	photo TEXT,
 	address TEXT,
 	postcode INTEGER,
 	avail_start DATE,
 	avail_end DATE,
-	price DECIMAL(10,2)
+	price DECIMAL(10,2),
+	comments TEXT
 );
 
 

@@ -11,13 +11,13 @@ class HomePage extends React.Component {
 
             <DefaultLayout title='Carly' cookies={this.props}>
 
-            <div class="homepage vertical-center">
+            <div className="homepage vertical-center">
 
                 <div>
 
-                    <h2 class="display-2 text-center">Own the trip, not the car</h2>
+                    <h2 className="display-2 text-center">Own the trip, not the car</h2>
 
-                    <h3 class="text-center">[SEARCH BAR GOES HERE]</h3>
+                    <h3 className="text-center">[SEARCH BAR GOES HERE]</h3>
 
                 </div>
 

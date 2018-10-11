@@ -11,8 +11,17 @@ const verif = (request) => {
 
 
 
+module.exports = (upload, db) => {
 
-module.exports = (db) => {
+
+    const getCars = (request, response) => {
+
+        db.cars.getCars((error, queryResult) => {
+
+            response.render('cars/getCars', { cars: queryResult.rows, cookies: request.cookies });
+
+        });
+    };
 
 
     const newCarForm = (request, response) => {
@@ -33,9 +42,10 @@ module.exports = (db) => {
 
     const newCarPost = (request, response) => {
 
+        console.log("request.file: ", request.file);
         console.log("request.body: ", request.body);
 
-        db.cars.newCar(request.body, (error, queryResult) => {
+        db.cars.newCar(request.body, request.file, (error, queryResult) => {
 
             if (error) {
 
@@ -61,8 +71,9 @@ module.exports = (db) => {
 
     return {
 
+        getCars,
         newCarForm,
-        newCarPost,
+        newCarPost
 
     };
 };

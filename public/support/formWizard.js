@@ -50,17 +50,17 @@ window.onload = function() {
         // This function deals with validation of the form fields
         var x, y, i, valid = true;
         x = document.querySelectorAll(".form-tab");
-        y = x[currentTab].getElementsByTagName("input");
+        y = x[currentTab].querySelectorAll("input:not(#newCarComments)");
         // A loop that checks every input field in the current tab:
         for (i = 0; i < y.length; i++) {
             // If a field is empty...
             if (y[i].value === "") {
                 // add an "invalid" class to the field:
-                y[i].classList.add("invalid");
+                y[i].classList.add("is-invalid");
                 // and set the current valid status to false:
                 valid = false;
             } else {
-                y[i].classList.remove("invalid");
+                y[i].classList.remove("is-invalid");
             };
         };
         // If the valid status is true, mark the step as finished and valid:
