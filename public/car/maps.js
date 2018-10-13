@@ -35,6 +35,7 @@ function initMap() {
             };
         };
 
+
         const address = `Singapore ${carlist[i].querySelector(".postcode").textContent}`;
         const contentString = carlist[i].querySelector(".car-info").innerHTML;
         const carImg = carlist[i].querySelector(".car-pic img");
@@ -52,16 +53,20 @@ function initMap() {
 
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: position
+                    position: position,
+                    animation: google.maps.Animation.DROP
                 });
 
+
                 marker.addListener('mouseover', function() {
+                    marker.setAnimation(google.maps.Animation.BOUNCE)
                     showCars();
-                    infowindow.open(map, this);
                     hideOtherCars();
+                    infowindow.open(map, this);
                 });
 
                 marker.addListener('mouseout', function() {
+                    marker.setAnimation(null)
                     infowindow.close();
                     showCars();
                 });
@@ -76,6 +81,11 @@ function initMap() {
                 carImg.addEventListener('mouseout', function() {
                     infowindow.close();
                 });
+
+                marker.addListener('click', function() {
+                    window.location.href = `/cars/${carlist[i].id.substr(3)}`;
+                });
+
 
                 // marker.addListener('click', function() {
                 //     google.maps.event.clearListeners(marker, 'mouseout');

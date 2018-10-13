@@ -40,7 +40,7 @@ body {
 
 /*Google map: */
 #map {
-	height: 80vh;
+	height: 100%;
 }
 
 /*Google map: hide fullscreen button and click event: */

@@ -14,16 +14,16 @@ class ShowCars extends React.Component {
                 <div className="container-fluid">
                     <h3>Cars</h3>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-6" style={{height: "80vh", overflow: "scroll"}}>
                             <ul className="list-group carlist">
                                 {this.props.cars.map(cars => (
                                     <li className="list-group-item" key={cars.id} id={`car${cars.id}`}>
                                         <div className="row">
                                             <div className="col car-pic">
-                                                <img src={`/uploads/${cars.photo}`} style={{width: "100%"}} />
+                                                <a href={`/cars/${cars.id}`}><img src={`/uploads/${cars.photo}`} style={{width: "100%"}} /></a>
                                             </div>
                                             <div className="col car-info">
-                                                {cars.year} {cars.make} {cars.model}<br /><br />
+                                                <a href={`/cars/${cars.id}`}>{cars.year} {cars.make} {cars.model}</a><br /><br />
                                                 {cars.address}, S{cars.postcode}<br />
                                                 S${cars.price} / day<br /><br />
                                                 "{cars.comments}"
@@ -36,7 +36,7 @@ class ShowCars extends React.Component {
                             </ul>
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-md-6" style={{height: "80vh"}}>
                             <div id="map"></div>
                         </div>
 
