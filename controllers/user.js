@@ -4,12 +4,10 @@ const sha256 = require('js-sha256');
 const SALT = 'CAR CAR carly';
 
 
-// const verif = (request) => {
+const verif = (request) => {
 
-//     return (sha256(request.cookies['userId'] + SALT) === request.cookies['loggedIn']);
-// };
-
-
+    return (sha256(request.cookies['userId'] + SALT) === request.cookies['loggedIn']);
+};
 
 
 module.exports = (db) => {
@@ -109,36 +107,6 @@ module.exports = (db) => {
     };
 
 
-    // const test = (request, response) => {
-
-    //     response.render('user/test');
-
-    // };
-
-
-    // const foobar = (request, response) => {
-
-    //     db.user.foobar('user4', (error, result)=> {
-
-    //             console.log("Callback", result);
-
-    //             if (error){
-    //                 console.log('error!', error);
-    //                 response.status(500).send('Didnt work~!');
-
-    //             } else if ( result.rows[0] === null) {
-
-    //                 response.status(403).send('Couldnt find user~!');
-
-    //             } else {
-
-    //                 response.json(result.rows[0]);
-
-    //             };
-    //     });
-    // };
-
-
     return {
 
         newUserForm,
@@ -146,9 +114,6 @@ module.exports = (db) => {
         userLoginForm,
         userLoginPost,
         userLogout
-
-        // test,
-        // foobar
 
     };
 };

@@ -10,13 +10,17 @@ module.exports = (dbPoolInstance) => {
 
         var hashedValue = sha256(reqbody.password);
 
-        const queryString = 'INSERT INTO users (email, firstname, lastname, password) VALUES ($1, $2, $3, $4) RETURNING id';
+        const queryString = 'INSERT INTO users (email, firstname, lastname, telephone, password, gender, occupation, nationality) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id';
 
         const values = [
             reqbody.email.toLowerCase(),
             reqbody.firstname,
             reqbody.lastname,
-            sha256(reqbody.password)
+            reqbody.telephone,
+            sha256(reqbody.password),
+            reqbody.gender,
+            reqbody.occupation,
+            reqbody.nationality
         ];
 
         dbPoolInstance.query(queryString, values, (error, queryResult) => {
@@ -37,22 +41,10 @@ module.exports = (dbPoolInstance) => {
     };
 
 
-    // const foobar = (reqbody, callback) => {
-
-    //     const queryString = `SELECT * FROM users WHERE username = '${reqbody}'`;
-
-    //     dbPoolInstance.query(queryString, (error, queryResult) => {
-
-    //         callback(error, queryResult);
-    //     });
-    // };
-
-
     return {
 
         newUser: newUser,
         login: login
-        // foobar: foobar
 
     };
 };

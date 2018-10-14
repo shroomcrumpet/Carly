@@ -91,11 +91,13 @@ class NavAuthenticated extends React.Component {
                             {this.props.cookies.firstName}
                         </a>
                         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="#">Edit profile</a>
-                            <a className="dropdown-item" href="#">Edit cars</a>
+                            <a className="dropdown-item" href="#">Your bookings</a>
+                            <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="#">Your cars</a>
+                            <a className="dropdown-item" href="#">View/Edit profile</a>
                             <div className="dropdown-divider"></div>
                             <form className="dropdown-item" method="POST" action="/users/logout?_method=DELETE">
-                                <input className="nav-link" type="submit" value="Log out" style={{color: "black"}} />
+                                <input className="nav-link" type="submit" value="Sign out" style={{color: "black"}} />
                             </form>
                         </div>
                     </li>

@@ -6,7 +6,11 @@ CREATE TABLE IF NOT EXISTS users (
 	email VARCHAR(320) UNIQUE,
 	firstname TEXT,
 	lastname TEXT,
-	password TEXT
+	telephone INTEGER,
+	password TEXT,
+	gender TEXT,
+	occupation TEXT,
+	nationality TEXT
 );
 
 

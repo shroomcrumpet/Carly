@@ -9,10 +9,12 @@ window.onload = function() {
 
         if (password.value != confirm_password.value) {
 
+            confirm_password.classList.add("is-invalid");
             confirm_password.setCustomValidity("Passwords don't match, please try again");
 
         } else {
 
+            confirm_password.classList.remove("is-invalid");
             confirm_password.setCustomValidity('');
         };
     };

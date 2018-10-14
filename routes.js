@@ -25,6 +25,8 @@ module.exports = (app, upload, db) => {
     app.post('/users/login', userController.userLoginPost);
     app.delete('/users/logout', userController.userLogout);
 
+    app.get('/users/:id', userController.getUser);
+
 
     // =========================================
     // Cars
