@@ -30,9 +30,29 @@ module.exports = (app, upload, db) => {
     // Cars
     // =========================================
 
-    app.get('/cars', carController.getCars)
-
     app.get('/cars/new', carController.newCarForm);
     app.post('/cars', upload.single('photo'), carController.newCarPost);
 
+    app.get('/cars/:id', carController.getCar);
+    app.post('/cars/:id', carController.carRentalPost);
+
+    app.get('/cars', carController.showCars);
+
+
+    // =========================================
+    // Rental
+    // =========================================
+
+
 };
+
+
+
+
+
+
+
+
+
+
+

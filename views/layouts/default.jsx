@@ -14,6 +14,7 @@ class DefaultLayout extends React.Component {
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                     <link rel="stylesheet" href="/css/bootstrap.css" />
+                    {this.props.extraCSS}
                     <link rel="stylesheet" href="/css/style.css" />
                     <title>{this.props.title}</title>
                 </head>
@@ -53,6 +54,7 @@ class DefaultLayout extends React.Component {
 
                 <script src="/jquery-3.0.0.slim.min.js" />
                 <script src="/bootstrap.bundle.min.js" />
+                {this.props.extraScripts}
 
                 </body>
 

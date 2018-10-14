@@ -16,6 +16,7 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.TERRAIN,
         mapTypeControl: false,
         clickableIcons: false
+
     });
 
 
@@ -71,6 +72,10 @@ function initMap() {
                     showCars();
                 });
 
+                marker.addListener('click', function() {
+                    window.location.href = `/cars/${carlist[i].id.substr(3)}`;
+                });
+
                 map.fitBounds(bounds);
 
                 carImg.addEventListener('mouseover', function() {
@@ -81,11 +86,6 @@ function initMap() {
                 carImg.addEventListener('mouseout', function() {
                     infowindow.close();
                 });
-
-                marker.addListener('click', function() {
-                    window.location.href = `/cars/${carlist[i].id.substr(3)}`;
-                });
-
 
                 // marker.addListener('click', function() {
                 //     google.maps.event.clearListeners(marker, 'mouseout');

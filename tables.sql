@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS cars (
 
 CREATE TABLE IF NOT EXISTS rental (
 	id SERIAL PRIMARY KEY,
-	owner_id INTEGER,
 	renter_id INTEGER,
 	car_id INTEGER,
 	rental_start DATE,

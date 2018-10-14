@@ -14,11 +14,39 @@ const verif = (request) => {
 module.exports = (upload, db) => {
 
 
-    const getCars = (request, response) => {
+    const showCars = (request, response) => {
 
-        db.cars.getCars((error, queryResult) => {
+        db.cars.showCars((error, queryResult) => {
 
-            response.render('cars/getCars', { cars: queryResult.rows, cookies: request.cookies });
+            response.render('cars/showCars', {
+                cars: queryResult.rows,
+                cookies: request.cookies
+            });
+        });
+    };
+
+
+    const getCar = (request, response) => {
+
+        db.cars.getCar(request.params.id, (errorCar, errorRental, queryResultCar, queryResultRental) => {
+
+            response.render('cars/getCar', {
+                car: queryResultCar.rows,
+                rental: queryResultRental.rows,
+                cookies: request.cookies
+            });
+        });
+    };
+
+
+    const carRentalPost = (request, response) => {
+
+        const rentalStart = request.body.rentalDates.split(" to ")[0];
+        const rentalEnd = request.body.rentalDates.split(" to ")[1];
+
+        db.cars.carRentalPost(request.cookies.userId, request.params.id, rentalStart, rentalEnd, (error, queryResult) => {
+
+            response.redirect('/');
 
         });
     };
@@ -71,7 +99,9 @@ module.exports = (upload, db) => {
 
     return {
 
-        getCars,
+        showCars,
+        getCar,
+        carRentalPost,
         newCarForm,
         newCarPost
 
