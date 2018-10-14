@@ -32,7 +32,8 @@ module.exports = (upload, db) => {
 
             response.render('cars/getCar', {
                 car: queryResultCar.rows,
-                rental: queryResultRental.rows,
+                carJSON: JSON.stringify(queryResultCar.rows[0]),
+                rental: JSON.stringify(queryResultRental.rows),
                 cookies: request.cookies
             });
         });
@@ -41,8 +42,10 @@ module.exports = (upload, db) => {
 
     const carRentalPost = (request, response) => {
 
-        const rentalStart = request.body.rentalDates.split(" to ")[0];
-        const rentalEnd = request.body.rentalDates.split(" to ")[1];
+        var rentalStart = request.body.rentalDates.split(" to ")[0];
+        var rentalEnd = request.body.rentalDates.split(" to ")[1];
+
+        if (rentalEnd === undefined) {rentalEnd = rentalStart}; //  single-day rental
 
         db.cars.carRentalPost(request.cookies.userId, request.params.id, rentalStart, rentalEnd, (error, queryResult) => {
 

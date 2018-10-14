@@ -21,7 +21,7 @@ class getCar extends React.Component {
                 <div>
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
-                    <script src="/car/carbooking.js" test="test" />
+                    <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} />
                 </div>
             }>
 
@@ -72,29 +72,79 @@ class getCar extends React.Component {
                                 </li>
                             </ul>
 
+                            <div id="map"></div>
 
                         </div>
 
                         <div className="col-md-5">
 
-                            <ul className="list-group">
-                                <li className="list-group-item">S${this.props.car[0].price} per day</li>
-                            </ul>
+                            <ul className="list-group-flush">
 
-                            <form method="POST" action={`/cars/${this.props.car[0].id}`}>
-                                <input type="text" id="flatpickr-cal" name="rentalDates" required />
-                                <button type="submit" className="btn btn-primary">Rent it!</button>
-                            </form>
+                                <li className="list-group-item"><span className="lead"><strong>S${this.props.car[0].price}</strong></span> per day</li>
+
+                                <CarRentalForm car={this.props.car} cookies={this.props.cookies} />
+
+                            </ul>
 
                         </div>
 
                     </div>
                 </div>
 
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
+
             </DefaultLayout>
         );
     };
 };
+
+
+class CarRentalForm extends React.Component {
+
+    render () {
+
+        if (this.props.cookies.loggedIn != undefined) { // Logged in //
+
+            return (
+
+                <form method="POST" action={`/cars/${this.props.car[0].id}`}>
+
+                    <li className="list-group-item">
+                        Rental period: <input type="text" id="flatpickr-cal" name="rentalDates" required />
+                    </li>
+
+                    <div className="rental-form" style={{display: "none"}}>
+                        <li className="list-group-item">
+                            <span className="rentalDuration"></span><span className="rentalSubTotal float-right">test</span>
+                        </li>
+
+                        <li className="list-group-item">
+                            Service fee ?⃝<span className="rentalFee float-right"></span>
+                        </li>
+
+                        <li className="list-group-item rental-form-total">
+                            <strong>Total<span className="rentalGrandTotal float-right"></span></strong>
+                        </li>
+
+                        <li className="list-group-item">
+                            <button type="submit" className="btn btn-primary">Rent it!</button>
+                        </li>
+                    </div>
+
+                </form>
+
+            );
+
+        } else {    // Not logged in //
+
+            return (
+
+                null
+            );
+        };
+    };
+};
+
 
 module.exports = getCar;
 
