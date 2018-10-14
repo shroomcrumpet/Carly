@@ -22,6 +22,7 @@ class getCar extends React.Component {
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
                     <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} />
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
                 </div>
             }>
 
@@ -40,7 +41,7 @@ class getCar extends React.Component {
                                 <li className="list-group-item">
                                     <table className="table table-hover">
                                         <thead>
-                                            <th scope="col" colSpan="2">[(icon)Max passengers, (icon)Transmission, (icon)Fuel]</th>
+                                            <th scope="col" colSpan="2"><span className="octicon-organization" />[(icon)Max passengers, (icon)Transmission, (icon)Fuel]</th>
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -90,8 +91,6 @@ class getCar extends React.Component {
 
                     </div>
                 </div>
-
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
 
             </DefaultLayout>
         );

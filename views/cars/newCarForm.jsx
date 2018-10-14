@@ -35,6 +35,47 @@ class UserLoginForm extends React.Component {
                         </div>
 
                         <div className="form-group">
+                            <label htmlFor="newCarPassengers">Maximum adult passengers: </label>
+                            <input className="form-control" id="newCarPassengers" placeholder="eg. 5" name="passengers" type="number" min="1" step="1" required />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Transmission: </label><br />
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="transmission1" name="transmission" value="Automatic" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="transmission1">Automatic</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="transmission2" name="transmission" value="Manual" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="transmission2">Manual</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="transmission3" name="transmission" value="Semi-automatic" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="transmission3">Semi-automatic</label>
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label>Fuel type: </label><br />
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="fuel1" name="fuel" value="Gasoline" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="fuel1">Gasoline</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="fuel2" name="fuel" value="Diesel" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="fuel2">Diesel</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="fuel3" name="fuel" value="Hybrid" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="fuel3">Hybrid</label>
+                            </div>
+                            <div className="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="fuel4" name="fuel" value="Electric" className="custom-control-input" required />
+                                <label className="custom-control-label" htmlFor="fuel4">Electric</label>
+                            </div>
+                        </div>
+
+                        <div className="form-group">
                             <label htmlFor="newCarComments">Any additional comments about your car (Optional): </label>
                             <input className="form-control" id="newCarComments" placeholder="eg. Car trunk can fit 3 golf bags comfortably" name="comments" type="text" />
                         </div>
@@ -60,7 +101,7 @@ class UserLoginForm extends React.Component {
 
                         <div className="form-group">
                             <label htmlFor="newCarPostcode">Postal Code: </label>
-                            <input className="form-control" id="newCarPostcode" placeholder="eg. 248470" name="postcode" type="number" length="6" required />
+                            <input className="form-control" id="newCarPostcode" placeholder="eg. 248470" name="postcode" type="number" minLength="6" maxLength="6" required />
                         </div>
 
                     </div>
