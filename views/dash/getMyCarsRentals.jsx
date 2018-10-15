@@ -4,7 +4,7 @@ var React = require("react");
 var DefaultLayout = require('../layouts/default');
 var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-class ShowCarsRentals extends React.Component {
+class ShowMyCars extends React.Component {
 
     render() {
 
@@ -57,7 +57,7 @@ class ShowCarsRentals extends React.Component {
     };
 };
 
-module.exports = ShowCarsRentals;
+module.exports = ShowMyCars;
 
 
 

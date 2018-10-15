@@ -77,10 +77,10 @@ module.exports = (dbPoolInstance) => {
 
     return {
 
-        showCars: showCars,
-        getCar: getCar,
-        carRentalPost: carRentalPost,
-        newCar: newCar
+        showCars,
+        getCar,
+        carRentalPost,
+        newCar
 
     };
 };

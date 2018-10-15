@@ -93,7 +93,7 @@ class NavAuthenticated extends React.Component {
                             {this.props.cookies.firstName}
                         </a>
                         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="#">Your bookings</a>
+                            <a className="dropdown-item" href="/user/bookings">Your bookings</a>
                             <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="/user/cars">Your cars</a>
                             <a className="dropdown-item" href="/user/edit">Edit profile</a>

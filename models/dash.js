@@ -3,97 +3,103 @@
 module.exports = (dbPoolInstance) => {
 
 
-    // const getCarsRentals = (userId, callback) => {
+    const getMyCarsRentals = (userId, callback) => {
 
-    //     // const queryString = `
-    //     //     SELECT users.id AS ownerId, cars.id AS carId, cars.make, cars.model, cars.year, cars.passengers, cars.transmission, cars.fuel, cars.photo, cars.address, cars.postcode, cars.avail_start, cars.avail_end, cars.price, cars.comments, rental.rental_start, rental.rental_end, renters.id AS renterId, renters.firstname AS renterFirstName, renters.lastname AS renterLastName, renters.telephone AS renterTelephone
+        const queryStringCars =`SELECT * FROM cars WHERE owner_id = ${userId}`;
+        let queryStringRentals;
+        let finalResult = [];
 
-    //     //     FROM users
-    //     //     INNER JOIN cars
-    //     //     ON (users.id = cars.owner_id)
-    //     //     INNER JOIN rental
-    //     //     ON (cars.id = rental.car_id)
-    //     //     INNER JOIN users AS renters
-    //     //     ON (rental.renter_id = renters.id)
+        dbPoolInstance.query(queryStringCars, (error, queryResult) => {
 
-    //     //     WHERE users.id = ${userId}
-    //     //     ORDER BY cars.id
-    //     //     `;
+            if (queryResult.rows.length === 0) {    // no cars owned
 
-    //     const queryStringCars =`SELECT * FROM cars WHERE owner_id = ${userId}`;
-    //     let queryStringRentals;
-    //     let finalResult = [];
+                return callback (error, null);
 
-    //     dbPoolInstance.query(queryStringCars, (error, queryResult) => {
+            } else {
 
-    //         if (queryResult.rows.length === 0) {    // no cars owned
+                let counter = 0;
 
-    //             return callback (error, null);
+                for (let i = 0; i < queryResult.rows.length; i++) {
 
-    //         } else {
+                    queryStringRentals = `
+                        SELECT rental.id, rental.renter_id, rental.rental_start, rental.rental_end, users.firstname, users.lastname, users.telephone
+                        FROM rental
+                        INNER JOIN users
+                        ON (rental.renter_id = users.id)
+                        WHERE rental.car_id = ${queryResult.rows[i].id}
+                        `;
 
-    //             for (let i = 0; i < queryResult.rows.length; i++) {
+                    dbPoolInstance.query(queryStringRentals, (error, queryResult2) => {
 
-    //                 queryStringRentals = `
-    //                     SELECT rental.id, rental.renter_id, rental.rental_start, rental.rental_end, users.firstname, users.lastname, users.telephone
-    //                     FROM rental
-    //                     INNER JOIN users
-    //                     ON (rental.renter_id = users.id)
-    //                     WHERE rental.car_id = ${queryResult.rows[i].id}
-    //                     `;
+                        rentals = queryResult.rows[i];
+                        rentals["rentals"] = queryResult2.rows;
+                        finalResult.push(rentals);
 
-    //                 dbPoolInstance.query(queryStringRentals, (error, queryResult2) => {
+                        if (counter === queryResult.rows.length - 1) {    // finished iterating through rentals
 
-    //                     rentals = queryResult.rows[i];
+                            callback(error, finalResult);
+                        };
 
-    //                     rentals["rentals"] = queryResult2.rows;
-    //                     finalResult.push(rentals);
-
-    //                     console.log("finalresult1: ", finalResult);
-
-    //                     if (i === queryResult.rows.length - 1) {    // finished iterating through rentals
-
-    //                         console.log("finalresult2: ", finalResult);
-
-    //                         callback(error, finalResult);
-    //                     };
-    //                 });
-    //             };
-    //         };
-    //     });
-    // };
-
-    const getCarsRentals = (userId, callback) => {
-
-        const queryString =`SELECT * FROM cars WHERE owner_id = ${userId}`;
-
-        dbPoolInstance.query(queryString, (error, queryResult) => {
-
-            callback(error, queryResult);
+                        counter++;
+                    });
+                };
+            };
         });
     };
 
-    const getCarsRentals2 = (carId, callback) => {
 
-        const queryString = `
-            SELECT rental.id, rental.renter_id, rental.rental_start, rental.rental_end, users.firstname, users.lastname, users.telephone
+    const getMyReservations = (userId, callback) => {
+
+        const queryString =`
+            SELECT rental.id, rental.rental_start, rental.rental_end, cars.make, cars.model, cars.year, cars.passengers, cars.transmission, cars.fuel, cars.photo, cars.address, cars.postcode, cars.price, cars.comments, users.firstname, users.lastname, users.telephone
             FROM rental
+            INNER JOIN cars
+            ON (rental.car_id = cars.id)
             INNER JOIN users
-            ON (rental.renter_id = users.id)
-            WHERE rental.car_id = ${carId}
+            ON (cars.owner_id = users.id)
+            WHERE rental.renter_id = ${userId}
             `;
 
         dbPoolInstance.query(queryString, (error, queryResult) => {
 
             callback(error, queryResult);
+
         });
     };
 
 
+    // const getCarsRentals = (userId, callback) => {
+
+    //     const queryString =`SELECT * FROM cars WHERE owner_id = ${userId}`;
+
+    //     dbPoolInstance.query(queryString, (error, queryResult) => {
+
+    //         callback(error, queryResult);
+    //     });
+    // };
+
+    // const getCarsRentals2 = (carId, callback) => {
+
+    //     const queryString = `
+    //         SELECT rental.id, rental.renter_id, rental.rental_start, rental.rental_end, users.firstname, users.lastname, users.telephone
+    //         FROM rental
+    //         INNER JOIN users
+    //         ON (rental.renter_id = users.id)
+    //         WHERE rental.car_id = ${carId}
+    //         `;
+
+    //     dbPoolInstance.query(queryString, (error, queryResult) => {
+
+    //         callback(error, queryResult);
+    //     });
+    // };
+
+
     return {
 
-        getCarsRentals: getCarsRentals,
-        getCarsRentals2: getCarsRentals2
+        getMyCarsRentals,
+        getMyReservations
+        // getCarsRentals2
 
     };
 };

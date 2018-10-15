@@ -84,10 +84,10 @@ module.exports = (dbPoolInstance) => {
 
     return {
 
-        newUser: newUser,
-        editUser: editUser,
-        editUserPut: editUserPut,
-        login: login
+        newUser,
+        editUser,
+        editUserPut,
+        login
 
     };
 };

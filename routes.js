@@ -47,7 +47,8 @@ module.exports = (app, upload, db) => {
     // Rental / Dashboards
     // =========================================
 
-    app.get('/user/cars', dashController.getCarsRentals);
+    app.get('/user/cars', dashController.getMyCarsRentals);
+    app.get('/user/bookings', dashController.getMyReservations);
 
 };
 
