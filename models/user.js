@@ -30,6 +30,47 @@ module.exports = (dbPoolInstance) => {
     };
 
 
+    const editUser = (userId, callback) => {
+
+        const queryString = `SELECT * FROM users WHERE id = ${userId}`;
+
+        dbPoolInstance.query(queryString, (error, queryResult) => {
+
+            callback(error, queryResult);
+        });
+    };
+
+
+    const editUserPut = (reqbody, callback) => {
+
+        let queryString;
+        let values = [
+            reqbody.email,
+            reqbody.firstname,
+            reqbody.lastname,
+            reqbody.telephone,
+            reqbody.gender,
+            reqbody.occupation,
+            reqbody.nationality
+        ];
+
+        if (reqbody.password === '') {
+
+            queryString = `UPDATE users SET "email"=($1), "firstname"=($2), "lastname"=($3), "telephone"=($4), "gender"=($5), "occupation"=($6), "nationality"=($7) WHERE "id"=${reqbody.id}`;
+
+        } else {
+
+            queryString = `UPDATE users SET "email"=($1), "firstname"=($2), "lastname"=($3), "telephone"=($4), "gender"=($5), "occupation"=($6), "nationality"=($7), "password"=($8) WHERE "id"=${reqbody.id}`;
+            values.push(sha256(reqbody.password));
+        };
+
+        dbPoolInstance.query(queryString, values, (error, queryResult) => {
+
+            callback(error, queryResult);
+        });
+    };
+
+
     const login = (reqbody, callback) => {
 
         const queryString = `SELECT * FROM users WHERE email = '${reqbody.email.toLowerCase()}'`;
@@ -44,6 +85,8 @@ module.exports = (dbPoolInstance) => {
     return {
 
         newUser: newUser,
+        editUser: editUser,
+        editUserPut: editUserPut,
         login: login
 
     };

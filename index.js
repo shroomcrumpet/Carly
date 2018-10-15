@@ -3,12 +3,27 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const multer = require('multer');
+const crypto = require('crypto');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
 
 
 const app = express();
-const upload = multer({ dest: 'public/uploads/' });
+
+const upload = multer ({
+    storage: multer.diskStorage({
+        destination: (request, file, callback) => {
+            callback(null, path.join(__dirname, 'public/uploads/'))
+        },
+        filename: function (request, file, callback) {
+            crypto.pseudoRandomBytes(16, function(err, raw) {
+                if (err) return callback(err);
+                callback(null, raw.toString('hex') + path.extname(file.originalname));
+            });
+        }
+    })
+});
 
 app.use(methodOverride('_method'));
 app.use(cookieParser());

@@ -43,8 +43,8 @@ class ShowCars extends React.Component {
                     </div>
                 </div>
 
-                <script src="/car/maps.js" />
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async />
+                <script src="/car/maps.js" defer />
 
             </DefaultLayout>
         );

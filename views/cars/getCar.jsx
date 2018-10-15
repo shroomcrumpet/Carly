@@ -16,21 +16,24 @@ class getCar extends React.Component {
             extraCSS={
                 <div>
                     <link rel="stylesheet" type="text/css" href="/css/flatpickr.min.css" />
+                    <link rel="stylesheet" type="text/css" href="/css/ekko-lightbox.css" />
                 </div>}
             extraScripts={
                 <div>
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
+                    <script src="/car/ekko-lightbox.min.js" />
                     <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} />
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async defer />
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async />
                 </div>
             }>
 
                 <div className="container-fluid">
-
                     <div className="row">
                         <div className="col text-center">
-                            <img src={`/uploads/${this.props.car[0].photo}`} className="getCarImg" />
+                            <a href={`/uploads/${this.props.car[0].photo}`} data-toggle="lightbox">
+                                <img src={`/uploads/${this.props.car[0].photo}`} className="getCarImg" />
+                            </a>
                         </div>
                     </div>
                     <div className="row" style={{width: "80vw", margin: "0 auto"}}>
@@ -133,7 +136,8 @@ class CarRentalForm extends React.Component {
                         </li>
 
                         <li className="list-group-item">
-                            Service fee ?⃝<span className="rentalFee float-right"></span>
+                            Service fee <span className="fee" data-toggle="tooltip" data-placement="auto" title="This helps us run our platform and offer services like 24/7 support during your rental.">?⃝</span>
+                            <span className="rentalFee float-right"></span>
                         </li>
 
                         <li className="list-group-item rental-form-total">

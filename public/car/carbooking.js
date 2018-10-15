@@ -105,3 +105,15 @@ function initMap() {
         };
     });
 };
+
+
+
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});

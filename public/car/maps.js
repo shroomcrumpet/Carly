@@ -67,7 +67,7 @@ function initMap() {
                 });
 
                 marker.addListener('mouseout', function() {
-                    marker.setAnimation(null)
+                    marker.setAnimation(-1);
                     infowindow.close();
                     showCars();
                 });

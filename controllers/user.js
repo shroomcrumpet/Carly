@@ -10,6 +10,7 @@ const verif = (request) => {
 };
 
 
+
 module.exports = (db) => {
 
 
@@ -45,7 +46,55 @@ module.exports = (db) => {
                 };
 
                 response.redirect('/');
+
             };
+        });
+    };
+
+
+    const editUser = (request, response) => {
+
+        if (verif(request)) {
+
+            console.log ('verif, logged in.');
+
+            db.user.editUser(request.cookies['userId'], (error, queryResult) => {
+
+                response.render('user/editUser', {
+                    user: queryResult.rows[0],
+                    cookies: request.cookies
+                });
+            });
+
+        } else {
+
+            console.log ('verif, NOT logged in.');
+            response.send('You must be logged in to view this page.');
+
+        };
+    };
+
+
+    const editUserPut = (request, response) => {
+
+        db.user.editUserPut(request.body, (error, queryResult) => {
+
+            if (error) {
+                console.error('Error editing user:', error);
+                response.sendStatus(500);
+
+            } else if (queryResult.rowCount >= 1) {
+
+                console.log('User edited successfully');
+
+            } else {
+
+                console.log('Unable to edit user');
+
+            };
+
+            response.redirect('/');
+
         });
     };
 
@@ -111,6 +160,8 @@ module.exports = (db) => {
 
         newUserForm,
         newUserPost,
+        editUser,
+        editUserPut,
         userLoginForm,
         userLoginPost,
         userLogout

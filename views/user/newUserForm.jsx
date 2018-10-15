@@ -37,11 +37,12 @@ class NewUserForm extends React.Component {
                             </div>
                             <input className="form-control" placeholder="Telephone number" name="telephone" type="number" minLength="7" maxLength="12" required />
                         </div>
-                        <small id="telephoneHelp" className="form-text text-muted">The number for booking contacts, reminders, and other notifications.</small>
+                        <small id="telephoneHelp" className="form-text text-muted">The number for rental contacts, reminders, and other notifications.</small>
                     </div>
 
                     <div className="form-group">
-                        <input className="form-control" placeholder="Password" name="password" id="password" type="password" minLength="6" required />
+                        <input className="form-control" aria-describedby="passwordHelp" placeholder="Password" name="password" id="password" type="password" minLength="6" required />
+                        <small id="passwordHelp" className="form-text text-muted">Minimum: 6 characters.</small>
                     </div>
 
                     <div className="form-group">
@@ -52,7 +53,7 @@ class NewUserForm extends React.Component {
 
                     <div className="form-group">
                         <select name="gender" className="custom-select" aria-describedby="genderHelp">
-                            <option selected>Gender</option>
+                            <option selected name="gender" value="">Gender</option>
                             <option name="gender" value="Male">Male</option>
                             <option name="gender" value="Female">Female</option>
                             <option name="gender" value="Other">Other</option>

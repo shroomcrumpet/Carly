@@ -47,7 +47,7 @@ class DefaultLayout extends React.Component {
                 <footer className="fixed-bottom">
                     <div className="container">
                         <div className="footer text-center">
-                              © Carly <br />All Rights Reserved
+                            © Carly <br />All Rights Reserved
                         </div>
                     </div>
                 </footer>
@@ -94,7 +94,7 @@ class NavAuthenticated extends React.Component {
                             <a className="dropdown-item" href="#">Your bookings</a>
                             <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="#">Your cars</a>
-                            <a className="dropdown-item" href="#">View/Edit profile</a>
+                            <a className="dropdown-item" href="/user/edit">Edit profile</a>
                             <div className="dropdown-divider"></div>
                             <form className="dropdown-item" method="POST" action="/users/logout?_method=DELETE">
                                 <input className="nav-link" type="submit" value="Sign out" style={{color: "black"}} />

@@ -21,11 +21,12 @@ module.exports = (app, upload, db) => {
     app.get('/users/new', userController.newUserForm);
     app.post('/users', userController.newUserPost);
 
+    app.get('/user/edit', userController.editUser);
+    app.put('/user', userController.editUserPut);
+
     app.get('/users/login', userController.userLoginForm);
     app.post('/users/login', userController.userLoginPost);
     app.delete('/users/logout', userController.userLogout);
-
-    app.get('/users/:id', userController.getUser);
 
 
     // =========================================

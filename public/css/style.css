@@ -40,6 +40,14 @@ div.vertical-center {
   justify-content: center;
 }
 
+div.tooltip-inner {
+	background-color: white;
+	color: black;
+	text-align: justify;
+	border: 1px solid #DBDBDB;
+	padding: 1vw;
+}
+
 
 
 
