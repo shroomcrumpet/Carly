@@ -5,6 +5,7 @@ const url = require('url');
 
 const user = require('./models/user');
 const cars = require('./models/cars');
+const dash = require('./models/dash');
 
 var configs;
 
@@ -47,6 +48,7 @@ module.exports = {
 
     user: user (pool),
     cars: cars (pool),
+    dash: dash (pool),
     pool: pool
 
 };

@@ -14,6 +14,7 @@ class DefaultLayout extends React.Component {
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                     <link rel="stylesheet" href="/css/bootstrap.css" />
+                    <link rel="stylesheet" type="text/css" href="/css/ekko-lightbox.css" />
                     {this.props.extraCSS}
                     <link rel="stylesheet" href="/css/style.css" />
                     <title>{this.props.title}</title>
@@ -54,8 +55,9 @@ class DefaultLayout extends React.Component {
 
                 <script src="/jquery-3.0.0.slim.min.js" />
                 <script src="/bootstrap.bundle.min.js" />
+                <script src="/car/ekko-lightbox.min.js" />
                 {this.props.extraScripts}
-
+                <script src="/support/init.js" />
                 </body>
 
             </html>
@@ -93,7 +95,7 @@ class NavAuthenticated extends React.Component {
                         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a className="dropdown-item" href="#">Your bookings</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">Your cars</a>
+                            <a className="dropdown-item" href="/user/cars">Your cars</a>
                             <a className="dropdown-item" href="/user/edit">Edit profile</a>
                             <div className="dropdown-divider"></div>
                             <form className="dropdown-item" method="POST" action="/users/logout?_method=DELETE">

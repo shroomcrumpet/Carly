@@ -3,7 +3,6 @@
 const React = require("react");
 const DefaultLayout = require('../layouts/default');
 
-
 class getCar extends React.Component {
 
     render() {
@@ -16,13 +15,11 @@ class getCar extends React.Component {
             extraCSS={
                 <div>
                     <link rel="stylesheet" type="text/css" href="/css/flatpickr.min.css" />
-                    <link rel="stylesheet" type="text/css" href="/css/ekko-lightbox.css" />
                 </div>}
             extraScripts={
                 <div>
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
-                    <script src="/car/ekko-lightbox.min.js" />
                     <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} />
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async />
                 </div>
@@ -31,7 +28,7 @@ class getCar extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col text-center">
-                            <a href={`/uploads/${this.props.car[0].photo}`} data-toggle="lightbox">
+                            <a href={`/uploads/${this.props.car[0].photo}`} data-toggle="lightbox" data-title={`${this.props.car[0].year} ${this.props.car[0].make} ${this.props.car[0].model}`} data-footer={`"${this.props.car[0].comments}"`} className="img-fluid">
                                 <img src={`/uploads/${this.props.car[0].photo}`} className="getCarImg" />
                             </a>
                         </div>

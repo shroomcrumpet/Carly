@@ -5,6 +5,7 @@ module.exports = (app, upload, db) => {
     const homeController = require('./controllers/home')(db);
     const userController = require('./controllers/user')(db);
     const carController = require('./controllers/car')(upload, db);
+    const dashController = require('./controllers/dash')(db);
 
 
     // =========================================
@@ -43,9 +44,10 @@ module.exports = (app, upload, db) => {
 
 
     // =========================================
-    // Rental
+    // Rental / Dashboards
     // =========================================
 
+    app.get('/user/cars', dashController.getCarsRentals);
 
 };
 
