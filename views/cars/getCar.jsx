@@ -21,7 +21,7 @@ class getCar extends React.Component {
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
                     <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} currentuser={this.props.cookies.userId} />
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async />
+                    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GMAPS_KEY %>&callback=initMap" async />
                 </div>
             }>
 
