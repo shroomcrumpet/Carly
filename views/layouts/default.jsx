@@ -57,8 +57,8 @@ class DefaultLayout extends React.Component {
                 <script src="/jquery-3.0.0.slim.min.js" />
                 <script src="/bootstrap.bundle.min.js" />
                 <script src="/car/ekko-lightbox.min.js" />
-                {this.props.extraScripts}
                 <script src="/support/init.js" />
+                {this.props.extraScripts}
                 </body>
 
             </html>
