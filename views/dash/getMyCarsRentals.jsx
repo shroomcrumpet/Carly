@@ -13,7 +13,7 @@ class ShowMyCars extends React.Component {
             <DefaultLayout title="Your cars" cookies={this.props.cookies}>
 
                 <div className="container-fluid">
-                    <h3>Your cars</h3>
+                    <h3 className="generic-page-heading2">Your cars</h3>
 
                     {this.props.cars.map (cars => (
 

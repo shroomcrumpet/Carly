@@ -11,7 +11,7 @@ class ShowCars extends React.Component {
 
             <DefaultLayout title='Cars' cookies={this.props.cookies}>
 
-                <div className="container-fluid">
+                <div className="container-fluid showcars-page-container">
                     <h3>Browse Cars</h3>
                     <div className="row">
                         <div className="col-md-6 showCars-container">

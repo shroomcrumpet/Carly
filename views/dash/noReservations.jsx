@@ -14,7 +14,7 @@ class NoReservations extends React.Component {
 
                 <div className="container-fluid">
 
-                    <h3>{this.props.cookies.firstName}, it looks like you have not made any bookings on Carly yet. Would you like to <a href="/cars">make one</a>?</h3>
+                    <h3 className="generic-page-heading">{this.props.cookies.firstName}, it looks like you have not made any bookings on Carly yet. Would you like to <a href="/cars">make one</a>?</h3>
 
                 </div>
 

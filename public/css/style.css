@@ -18,6 +18,13 @@ body {
 	margin-bottom: 5%;
 }
 
+h3.generic-page-heading {
+	margin: 50px;
+}
+
+h3.generic-page-heading2 {
+	margin: 20px;
+}
 
 
 
@@ -29,10 +36,21 @@ div.homepage {
 	background-repeat: no-repeat;
 }
 
-div.homepage h2, div.homepage h3 {
+div.splash-container {
+	height: 100%;
+}
+
+div.homepage h2 {
 	color: white;
 	font-weight: 400;
+	margin-left: 8%;
+	max-width: 50vw;
+	font-family: 'Caveat', cursive;
+/*	text-transform: uppercase;*/
 }
+
+
+
 
 div.vertical-center {
   display: flex;
@@ -48,10 +66,18 @@ div.tooltip-inner {
 	padding: 1vw;
 }
 
+.list-group-item, .list-group-item:hover {
+	z-index: auto;
+}
+
 
 
 
 /*'/cars' page*/
+div.showcars-page-container h3 {
+	margin: 20px;
+}
+
 div.showCars-container {
 	height: 80vh;
 	overflow: scroll;
@@ -69,6 +95,11 @@ img.showCarsImg {
 
 
 /*'/cars/:id page'*/
+div.carpage-container {
+	max-height: 88vh;
+	overflow: scroll;
+}
+
 img.getCarImg {
 	margin-top: 1.5vh;
 	width: 80vw;

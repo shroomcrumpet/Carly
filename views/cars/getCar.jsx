@@ -20,12 +20,12 @@ class getCar extends React.Component {
                 <div>
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
-                    <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} />
+                    <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} currentuser={this.props.cookies.userId} />
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl9rI2XLO4_np_nKxRdosBX6KaOApH4mU&callback=initMap" async />
                 </div>
             }>
 
-                <div className="container-fluid">
+                <div className="container-fluid carpage-container">
                     <div className="row">
                         <div className="col text-center">
                             <a href={`/uploads/${this.props.car[0].photo}`} data-toggle="lightbox" data-title={`${this.props.car[0].year} ${this.props.car[0].make} ${this.props.car[0].model}`} data-footer={`"${this.props.car[0].comments}"`} className="img-fluid">
@@ -128,6 +128,7 @@ class CarRentalForm extends React.Component {
                     </li>
 
                     <div className="rental-form" style={{display: "none"}}>
+
                         <li className="list-group-item">
                             <span className="rentalDuration"></span><span className="rentalSubTotal float-right">test</span>
                         </li>
@@ -142,8 +143,35 @@ class CarRentalForm extends React.Component {
                         </li>
 
                         <li className="list-group-item">
-                            <button type="submit" className="btn btn-primary">Rent it!</button>
+
+                            <span className="d-inline-block" id="bookingConfirmationModalButtonWrapper" tabIndex="0" data-toggle="tooltip" title="You may not rent your own car!">
+                                <button type="button" className="btn btn-primary" id="bookingConfirmationModalButton" data-toggle="modal" data-target="#bookingConfirmationModal">
+                                    Proceed
+                                </button>
+                            </span>
+
+                            <div className="modal fade" id="bookingConfirmationModal" tabIndex="-1" role="dialog" aria-labelledby="bookingConfirmationModalTitle" aria-hidden="true">
+                              <div className="modal-dialog modal-dialog-centered" role="document">
+                                <div className="modal-content">
+                                  <div className="modal-header">
+                                    <h5 className="modal-title" id="bookingConfirmationModalTitle">Confirm your reservation</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div className="modal-body">
+                                    Are you sure you wish to rent this {this.props.car[0].make} {this.props.car[0].model} for <span className="confirmationModalGrandTotal"></span>?
+                                  </div>
+                                  <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Maybe not</button>
+                                    <button type="submit" className="btn btn-primary">Reserve it!</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                         </li>
+
                     </div>
 
                 </form>

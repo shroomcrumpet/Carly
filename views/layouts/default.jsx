@@ -13,11 +13,12 @@ class DefaultLayout extends React.Component {
                 <head>
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                    <title>{this.props.title}</title>
+                    <link rel='shortcut icon' href='/img/favicon.png' type='image/x-icon' />
                     <link rel="stylesheet" href="/css/bootstrap.css" />
                     <link rel="stylesheet" type="text/css" href="/css/ekko-lightbox.css" />
                     {this.props.extraCSS}
                     <link rel="stylesheet" href="/css/style.css" />
-                    <title>{this.props.title}</title>
                 </head>
 
 

@@ -2,6 +2,7 @@
 
 const rental = JSON.parse(document.currentScript.getAttribute('rental'));
 const carAttr = JSON.parse(document.currentScript.getAttribute('car'));
+const currentUser = document.currentScript.getAttribute('currentuser');
 
 const rentalRate = carAttr.price;
 const postcode = carAttr.postcode;
@@ -14,6 +15,9 @@ const fieldRentalDuration = document.querySelector("span.rentalDuration");
 const fieldRentalSubTotal = document.querySelector("span.rentalSubTotal");
 const fieldRentalFee = document.querySelector("span.rentalFee");
 const fieldRentalGrandTotal = document.querySelector("span.rentalGrandTotal");
+const confirmationModalGrandTotal = document.querySelector("span.confirmationModalGrandTotal");
+const confirmationModalButton = document.querySelector("#bookingConfirmationModalButton");
+
 
 var geocoder;
 var map;
@@ -43,6 +47,8 @@ function minDate() {
 
 window.onload = function() {
 
+    $('#bookingConfirmationModalButtonWrapper').tooltip('disable');
+
     flatpickr("#flatpickr-cal", {
         // inline: true,    // permanently shows calendar on page
         mode: "range",
@@ -63,6 +69,13 @@ window.onload = function() {
                 fieldRentalSubTotal.textContent = `$${(rentalRate * rentalDuration).toFixed(2)}`;
                 fieldRentalFee.textContent = `$${(0.1 * rentalRate * rentalDuration).toFixed(2)}`;
                 fieldRentalGrandTotal.textContent = `S$${(1.1 * rentalRate * rentalDuration).toFixed(2)}`;
+                confirmationModalGrandTotal.textContent = `S$${(1.1 * rentalRate * rentalDuration).toFixed(2)}`;
+            };
+
+            if (parseInt(carAttr.owner_id) === parseInt(currentUser)) {
+                confirmationModalButton.disabled = true;
+                confirmationModalButton.style["pointer-events"] = "none";
+                $('#bookingConfirmationModalButtonWrapper').tooltip('enable');
             };
         }
     });

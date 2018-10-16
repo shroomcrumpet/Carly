@@ -9,16 +9,15 @@ class HomePage extends React.Component {
 
         return (
 
-            <DefaultLayout title='Carly' cookies={this.props}>
-
-            <div className="homepage vertical-center">
-
+            <DefaultLayout title='Carly' cookies={this.props} extraCSS={
                 <div>
+                    <link href="https://fonts.googleapis.com/css?family=Caveat:400,700" rel="stylesheet" />
+                </div>}>
 
-                    <h2 className="display-2 text-center">Own the trip, not the car</h2>
+            <div className="homepage">
 
-                    <h3 className="text-center">[SEARCH BAR GOES HERE]</h3>
-
+                <div className="splash-container d-flex align-items-center">
+                    <h2 className="display-2">"Own the trip, not the car"</h2>
                 </div>
 
             </div>
