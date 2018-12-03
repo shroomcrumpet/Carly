@@ -49,7 +49,8 @@ function initMap() {
                 bounds.extend(position);
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: `<div class="info-window-content">${contentString}</div>`
+                    content: `<div class="info-window-content">${contentString}</div>`,
+                    disableAutoPan: true
                 });
 
                 var marker = new google.maps.Marker({
@@ -60,7 +61,7 @@ function initMap() {
 
 
                 marker.addListener('mouseover', function() {
-                    marker.setAnimation(google.maps.Animation.BOUNCE)
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
                     showCars();
                     hideOtherCars();
                     infowindow.open(map, this);

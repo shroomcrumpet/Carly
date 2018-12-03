@@ -3,6 +3,7 @@
 var React = require("react");
 var DefaultLayout = require('../layouts/default');
 
+
 class ShowCars extends React.Component {
 
     render() {
@@ -44,7 +45,7 @@ class ShowCars extends React.Component {
                 </div>
 
                 <script src="/car/maps.js" />
-                <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GMAPS_KEY %>&callback=initMap" async defer />
+                <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_KEY}&callback=initMap`} async defer />
 
             </DefaultLayout>
         );

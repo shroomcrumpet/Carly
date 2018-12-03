@@ -1,5 +1,9 @@
 ####### NODE
 
+
+.env
+
+
 # Logs
 logs
 *.log

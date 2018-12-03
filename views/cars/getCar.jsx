@@ -7,7 +7,17 @@ class getCar extends React.Component {
 
     render() {
 
-        return (
+        // const stuff = {  // testing purposes
+        //     banana : "hello"
+        // }
+
+        // let fullObj = JSON.stringify( stuff );
+        //             <script type="text/javascript">
+        //                 dangerouslySetInnerHTML={{__html: clean}}
+        //                 var stuff = {fullObj};
+        //             </script>
+
+            return (
 
             <DefaultLayout
             title={`${this.props.car[0].make} ${this.props.car[0].model}`}
@@ -20,8 +30,9 @@ class getCar extends React.Component {
                 <div>
                     <script src="/calendar/moment.min.js" />
                     <script src="/calendar/flatpickr.js" />
+
                     <script src="/car/carbooking.js" rental={this.props.rental} car={this.props.carJSON} currentuser={this.props.cookies.userId} />
-                    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GMAPS_KEY %>&callback=initMap" async />
+                    <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_KEY}&callback=initMap`} async />
                 </div>
             }>
 
