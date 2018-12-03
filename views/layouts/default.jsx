@@ -77,9 +77,11 @@ class NavAuthenticated extends React.Component {
 
                 <ul className="navbar-nav ml-auto">
 
+                    {/*
                     <li className="nav-item">
                         <a className="nav-link" href="#">How it works</a>
                     </li>
+                    */}
 
                     <li className="nav-item">
                         <a className="nav-link" href="/cars">Browse cars</a>

@@ -13,7 +13,7 @@ class ShowMyBookings extends React.Component {
             <DefaultLayout title="Your bookings" cookies={this.props.cookies}>
 
                 <div className="container-fluid">
-                    <h3>Your bookings</h3>
+                    <h3 className="generic-page-heading2">Your bookings</h3>
 
                     {this.props.bookings.map (bookings => (
 

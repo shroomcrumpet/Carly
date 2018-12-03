@@ -11,16 +11,25 @@ class UserLoginForm extends React.Component {
 
             <DefaultLayout title='Sign in' cookies={this.props}>
 
-                <h4>Sign in to your Carly Account</h4>
+                <div className="general-container">
 
-                <form method="POST" action="/users/login">
+                    <h4>Sign in to your Carly Account</h4>
 
-                    <input placeholder="Email Address" name="email" type="text" required />
-                    <input placeholder="Password" name="password" type="password" required />
+                    <form method="POST" action="/users/login">
 
-                    <input name="submit" type="submit" />
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Email Address" name="email" type="text" required />
+                        </div>
 
-                </form>
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Password" name="password" type="password" required />
+                        </div>
+
+                        <button type="submit" className="btn btn-primary">Submit</button>
+
+                    </form>
+
+                </div>
 
             </DefaultLayout>
         );
