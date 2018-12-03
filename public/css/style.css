@@ -12,7 +12,7 @@ input[type=number]::-webkit-outer-spin-button {
 .container-fluid {
 	width: 100%;
 	max-height: 89vh;
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 body {
@@ -55,7 +55,7 @@ div.general-container {
 	margin: 0 auto;
 	padding: 50px;
 	max-height: 89vh;
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 
@@ -87,7 +87,7 @@ div.showcars-page-container h3 {
 
 div.showCars-container {
 	height: 80vh;
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 div.showCars-map-container {
@@ -105,7 +105,7 @@ img.showCarsImg {
 /*'/cars/:id page'*/
 div.carpage-container {
 	max-height: 88vh;
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 img.getCarImg {
