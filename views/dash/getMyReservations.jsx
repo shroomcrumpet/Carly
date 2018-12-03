@@ -20,8 +20,8 @@ class ShowMyBookings extends React.Component {
                         <div className="row">
 
                             <div className="col-md-4">
-                                <a href={`/uploads/${bookings.photo}`} data-toggle="lightbox" data-title={`${bookings.year} ${bookings.make} ${bookings.model}`} data-footer={`"${bookings.comments}"`} className="img-fluid">
-                                    <img src={`/uploads/${bookings.photo}`} className="showCarsImg" />
+                                <a href={bookings.photo} data-toggle="lightbox" data-title={`${bookings.year} ${bookings.make} ${bookings.model}`} data-footer={`"${bookings.comments}"`} className="img-fluid">
+                                    <img src={bookings.photo} className="showCarsImg" />
                                 </a>
                             </div>
 

@@ -20,8 +20,8 @@ class ShowMyCars extends React.Component {
                         <div className="row">
 
                             <div className="col-md-4">
-                                <a href={`/uploads/${cars.photo}`} data-toggle="lightbox" data-title={`${cars.year} ${cars.make} ${cars.model}`} data-footer={`"${cars.comments}"`} className="img-fluid">
-                                    <img src={`/uploads/${cars.photo}`} className="showCarsImg" />
+                                <a href={cars.photo} data-toggle="lightbox" data-title={`${cars.year} ${cars.make} ${cars.model}`} data-footer={`"${cars.comments}"`} className="img-fluid">
+                                    <img src={cars.photo} className="showCarsImg" />
                                 </a>
                             </div>
 
