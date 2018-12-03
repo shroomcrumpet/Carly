@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shroomcrumpet/project2#readme",
   "dependencies": {
+    "cloudinary": "^1.13.2",
     "cookie-parser": "^1.4.3",
     "crypto": "^1.0.1",
     "dotenv": "^6.1.0",

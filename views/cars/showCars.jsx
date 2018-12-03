@@ -21,7 +21,7 @@ class ShowCars extends React.Component {
                                     <li className="list-group-item" key={cars.id} id={`car${cars.id}`}>
                                         <div className="row">
                                             <div className="col car-pic">
-                                                <a href={`/cars/${cars.id}`}><img src={`/uploads/${cars.photo}`} className="showCarsImg" /></a>
+                                                <a href={`/cars/${cars.id}`}><img src={cars.photo} className="showCarsImg" /></a>
                                             </div>
                                             <div className="col car-info">
                                                 <a href={`/cars/${cars.id}`}>{cars.year} {cars.make} {cars.model}</a><br /><br />

@@ -1,5 +1,6 @@
 
 
+const cloudinary = require('cloudinary');
 const sha256 = require('js-sha256');
 const SALT = 'CAR CAR carly';
 
@@ -73,29 +74,32 @@ module.exports = (upload, db) => {
 
     const newCarPost = (request, response) => {
 
-        console.log("request.file: ", request.file);
-        console.log("request.body: ", request.body);
+        // console.log("request.body: ", request.body);
+        // console.log("request.file: ", request.file);
 
-        db.cars.newCar(request.body, request.file, (error, queryResult) => {
+        cloudinary.uploader.upload(request.file.path, function(result) {
 
-            if (error) {
+            db.cars.newCar(request.body, result.secure_url, (error, queryResult) => {
 
-                console.error('DB/server error:', error);
-                response.sendStatus(500);
+                if (error) {
 
-            } else {
-
-                if (queryResult.rowCount >= 1) {
-
-                    console.log('Car added successfully');
+                    console.error('DB/server error:', error);
+                    response.sendStatus(500);
 
                 } else {
 
-                    console.log('Car could not be added for user');
-                };
+                    if (queryResult.rowCount >= 1) {
 
-                response.redirect('/');
-            };
+                        console.log('Car added successfully');
+
+                    } else {
+
+                        console.log('Car could not be added for user');
+                    };
+
+                    response.redirect('/');
+                };
+            });
         });
     };
 

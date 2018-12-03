@@ -48,7 +48,7 @@ module.exports = (dbPoolInstance) => {
     };
 
 
-    const newCar = (reqbody, reqfile, callback) => {
+    const newCar = (reqbody, imgURL, callback) => {
 
         const queryString = 'INSERT INTO cars (owner_id, make, model, year, passengers, transmission, fuel, photo, address, postcode, avail_start, avail_end, price, comments) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *';
 
@@ -60,7 +60,7 @@ module.exports = (dbPoolInstance) => {
             reqbody.passengers,
             reqbody.transmission,
             reqbody.fuel,
-            reqfile.filename,
+            imgURL,
             reqbody.address,
             reqbody.postcode,
             reqbody.avail_start,

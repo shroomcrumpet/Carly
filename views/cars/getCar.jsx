@@ -39,8 +39,8 @@ class getCar extends React.Component {
                 <div className="container-fluid carpage-container">
                     <div className="row">
                         <div className="col text-center">
-                            <a href={`/uploads/${this.props.car[0].photo}`} data-toggle="lightbox" data-title={`${this.props.car[0].year} ${this.props.car[0].make} ${this.props.car[0].model}`} data-footer={`"${this.props.car[0].comments}"`} className="img-fluid">
-                                <img src={`/uploads/${this.props.car[0].photo}`} className="getCarImg" />
+                            <a href={this.props.car[0].photo} data-toggle="lightbox" data-title={`${this.props.car[0].year} ${this.props.car[0].make} ${this.props.car[0].model}`} data-footer={`"${this.props.car[0].comments}"`} className="img-fluid">
+                                <img src={this.props.car[0].photo} className="getCarImg" />
                             </a>
                         </div>
                     </div>
